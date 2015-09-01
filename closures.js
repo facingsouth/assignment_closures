@@ -18,6 +18,9 @@ assignments.one = function(){
 
   }
 
+  // `i` kept getting redefined, so it was passed-by-value as a
+  // function arg to prevent this
+
   // No matter what I click, it always picks the same element
   // could it be CLOSURES???
   for (var i = 0; i < buttons.length; i++) {
@@ -44,6 +47,8 @@ assignments.two = function(){
                           $('#mood').text(this.mood);
 
                           //So what goes wrong here?
+                          //the scope of setTimeout is global,
+                          //so we changed `this` to `viking` obj
                           setTimeout( (function() {
                             viking.mood = "Happy!";
 
